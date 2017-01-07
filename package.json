@@ -1,0 +1,22 @@
+{
+  "name": "healthyweight-smart-app",
+  "version": "1.0.0",
+  "description": "Healthy Weight SMART on FHIR App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/psbrandt/healthyweight-fhir-app.git"
+  },
+  "author": "OpenMRS <pascal@openmrs.org> (http://openmrs.org)",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/psbrandt/healthyweight-fhir-app/issues"
+  },
+  "homepage": "https://github.com/psbrandt/healthyweight-fhir-app#readme",
+  "dependencies": {
+    "fhirclient": "^0.1.9"
+  }
+}
