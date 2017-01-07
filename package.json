@@ -17,6 +17,5 @@
   },
   "homepage": "https://github.com/psbrandt/healthyweight-fhir-app#readme",
   "dependencies": {
-    "fhirclient": "^0.1.9"
   }
 }
