@@ -16,6 +16,8 @@
     "url": "https://github.com/psbrandt/healthyweight-fhir-app/issues"
   },
   "homepage": "https://github.com/psbrandt/healthyweight-fhir-app#readme",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^0.9.0"
   }
 }

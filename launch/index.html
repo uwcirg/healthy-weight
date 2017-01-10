@@ -3,14 +3,26 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+    <link rel="stylesheet" href="../css/material.min.css">
+    <link rel="stylesheet" href="../css/launch.css">
+    <link rel="icon" href="../favicon.ico" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <title>Healthy Weight SMART Application</title>
+    <script src="../js/material.min.js"></script>
     <script src="https://rawgit.com/smart-on-fhir/client-js/master/dist/fhir-client.min.js"></script>
     <script>
       FHIR.oauth2.authorize({
-        "client_id": "3e720e37-a496-46a4-9cd8-38e7436c9cb7",
-        "scope":  "patient/*.read"
+        "client_id": "2aca69b6-4694-41bd-9076-c0ac1570e3b3",
+        "scope":  "patient/*.read",
+        "redirect_uri": "https://psbrandt.io/experiments/sof-test"
       });
     </script>
   </head>
-  Loading...
+  <body>
+    <div class="auth-box">
+      <div class="mdl-spinner mdl-js-spinner is-active"></div>
+      <div>Authenticating</div>
+    </div>
+  </body>
 </html>
