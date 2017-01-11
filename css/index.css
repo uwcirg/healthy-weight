@@ -28,3 +28,19 @@ html body #health-weight {
   font-style: italic;
   color: #ddd;
 }
+
+.cirg-logo-container {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  padding-top: 50px
+}
+
+.cirg-logo {
+  align-self: center;
+  width 300px;
+}
+
+.mdl-layout__header {
+  background-color: rgb(51, 0, 111);
+}
