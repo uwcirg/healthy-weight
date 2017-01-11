@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Healthy Weight SMART Application</title>
-  </head>
-  <body>
-    Authorized
-  </body>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+  <link rel="stylesheet" href="css/material.min.css" media="all" type="text/css">
+  <link rel="stylesheet" href="css/index.css" media="all" type="text/css">
+  <link rel="stylesheet" href="css/materialdesignicons.min.css" media="all" type="text/css" />
+  <link rel="icon" href="favicon.ico" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <title>Healthy Weight SMART Application</title>
+  <script src="js/material.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+  <script src="https://rawgit.com/smart-on-fhir/client-js/master/dist/fhir-client.min.js"></script>
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
+</head>
+
+<body>
+  <div id="healthy-weight">
+    <div class="mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--fixed">
+        <div class="mdl-layout__header-row">
+          <span class="mdl-layout-title">Healthy Weight SMART Application</span>
+        </div>
+      </header>
+      <main class="mdl-layout__content">
+        <div class="page-content">
+          <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--2-col"></div>
+            <div class="mdl-cell mdl-cell--8-col">
+
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <div class="mdl-card__title-text">{{ patient.name.given }} {{ patient.name.family }}</div>
+                </div>
+                <div class="mdl-card__supporting-text">
+                  Birthdate: {{ patient.birthDate }}
+                </div>
+                <div class="mdl-card__supporting-text">
+                  Weight: {{ patient.weight }} {{ patient.weightUnit }}
+                </div>
+                <div class="mdl-card__supporting-text">
+                  Height: {{ patient.height }} {{ patient.heightUnit }}
+                </div>
+                <div class="mdl-card__supporting-text">
+                  BMI: {{ patient.bmi }}
+                </div>
+                <div class="mdl-card__supporting-text">
+                  Identifiers
+                  <ul>
+                    <li v-for="(item, index) in patient.identifiers">
+                      {{ item.value }} <span class="idsystem">{{ item.system }} </span>
+                    </li>
+                  </ul>
+                </div>
+                <div class="mdl-card__menu">
+                  <i v-bind:class="{ 'mdi-human-female': patient.gender == 'female', 'mdi-human-male': patient.gender == 'male' }" class="mdi mdi-48px"></i>
+                </div>
+              </div>
+              <p></p>
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <div class="charttitle">Median BMI for Three Exercise Levels</div>
+                </div>
+                <canvas class="chartCanvas" id="BMIChart"></canvas>
+              </div>
+
+            </div>
+            <div class="mdl-cell mdl-cell--2-col"></div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+<script src="js/healthy-weight.js"></script>
+
 </html>
