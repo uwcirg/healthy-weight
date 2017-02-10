@@ -1,10 +1,10 @@
 <br/><br/>
 <div style="text-align:center">
-<img height="300" src="http://multisite-dev-www-1.cirg.washington.edu/wp-content/uploads/2014/10/CIRG-draft.png"/>
-<img height="280" width="20" src="http://ihe.cirg.washington.edu/1x1-ffffffff.png"/>
-<img height="280" width="4" src="http://ihe.cirg.washington.edu/1x1.png"/>
-<img height="280" width="25" src="http://ihe.cirg.washington.edu/1x1-ffffffff.png"/>
-<img height="280" src="https://www.washington.edu/brand/files/2014/09/Signature_Stacked_Purple_Hex.png"/>
+<img height="250" src="http://multisite-dev-www-1.cirg.washington.edu/wp-content/uploads/2014/10/CIRG-draft.png"/>
+<img height="230" width="20" src="http://ihe.cirg.washington.edu/1x1-ffffffff.png"/>
+<img height="230" width="4" src="http://ihe.cirg.washington.edu/1x1.png"/>
+<img height="230" width="25" src="http://ihe.cirg.washington.edu/1x1-ffffffff.png"/>
+<img height="230" src="https://www.washington.edu/brand/files/2014/09/Signature_Stacked_Purple_Hex.png"/>
 </div>
 <br/><br/>
 
