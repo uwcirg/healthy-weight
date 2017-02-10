@@ -19,7 +19,7 @@ HIMSS 2017 interoperability showcase. For more information see the [CIRG website
 
 To run the app in the Epic sandbox, do the following:
 
-1. Log in at [open.epic.com](https://open.epic.com/) using the `fhir.cirg` Gmail account
+1. Log in at [open.epic.com](https://open.epic.com/) using the `fhir.cirg` Gmail account (for those of us often logged into Google first, the easiest way to do this is to use a fresh browswer, perhaps one that doesn't preserve information between sessions, like the inconveniently named "Epic" browser, or Chrome in incognito mode, etc.   Or, just log out of your google ID before going to open.epic.com)
 2. Go to the [launchpad](https://open.epic.com/Launchpad/OAuth2Sso), select the desired patient and enter the following for the rest:
 
   >  **NAME OF YOUR APP:** `Healthy Weight` (or leave it unchanged)<br/>
