@@ -9,6 +9,7 @@
 <br/><br/>
 
 # Healthy Weight SMART on FHIR Application
+
 [![Build Status](https://travis-ci.org/uwcirg/healthy-weight.svg?branch=gh-pages)](https://travis-ci.org/uwcirg/healthy-weight)
 
 This repository contains the healthy weight SMART on FHIR application used in the
@@ -18,7 +19,7 @@ HIMSS 2017 interoperability showcase. For more information see the [CIRG website
 
 To run the app in the Epic sandbox, do the following:
 
-1. Log in at [open.epic.com](https://open.epic.com/) using the `cirg.fhir` Gmail account
+1. Log in at [open.epic.com](https://open.epic.com/) using the `fhir.cirg` Gmail account
 2. Go to the [launchpad](https://open.epic.com/Launchpad/OAuth2Sso), select the desired patient and enter the following for the rest:
 
   >  **NAME OF YOUR APP:** `Healthy Weight` (or leave it unchanged)<br/>
@@ -27,3 +28,19 @@ To run the app in the Epic sandbox, do the following:
   > **CLIENTID:** `b0f2c2a2-1ccb-4a5c-921b-d297edf78222`
 
 3. Click <kbd>LAUNCH APP</kbd>
+
+## Technical
+
+The healthy weight app is a [SMART on FHIR](http://docs.smarthealthit.org/) application
+that implements the [public app authorization workflow](http://docs.smarthealthit.org/authorization/)
+using the **smart-on-fhir** [client-js library](https://github.com/smart-on-fhir/client-js).
+
+Once authorized, it pulls basic demographics, along with patient height (LOINC [8302-2](http://s.details.loinc.org/LOINC/8302-2.html?sections=Comprehensive)) and weight (LOINC [3141-9](http://s.details.loinc.org/LOINC/3141-9.html?sections=Comprehensive)), and displays
+the calculated BMI on top of some background population data.
+
+The application framework used is [Vue.js](https://vuejs.org/), and [Travis CI](https://travis-ci.org/uwcirg/healthy-weight) is used to build and deploy the
+application on every commit.
+
+## License
+
+[![CC BY-SA](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by-sa.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
