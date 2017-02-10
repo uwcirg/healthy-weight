@@ -24,6 +24,6 @@ To run the app in the Epic sandbox, do the following:
   >  **NAME OF YOUR APP:** `Health Weight` (or leave it unchanged)<br/>
   > **YOUR APP'S LAUNCH URL:** `https://ihe.cirg.washington.edu/himss/healthy-weight/launch`<br/>
   > **YOUR APP'S OAUTH2 REDIRECT URL:** `https://ihe.cirg.washington.edu/himss/healthy-weight`<br/>
-  > **CLIENTID:** The `b0f2c2a2-1ccb-4a5c-921b-d297edf78222`
+  > **CLIENTID:** `b0f2c2a2-1ccb-4a5c-921b-d297edf78222`
 
 3. Click <kbd>LAUNCH APP</kbd>
