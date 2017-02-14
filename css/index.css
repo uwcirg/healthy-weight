@@ -18,6 +18,10 @@ html body #health-weight {
   font-size: 25px;
 }
 
+.no-menu {
+  padding-left: 40px;
+}
+
 .charttitle {
   font-size: 35px;
   font-weight: 200;
@@ -31,16 +35,31 @@ html body #health-weight {
 
 .cirg-logo-container {
   display: flex;
-  align-content: center;
-  justify-content: center;
-  padding-top: 50px
+  align: center;
+  /*align-content: middle;*/
+  justify-content: space-around;
+  width: 100%;
+}
+
+.app-title {
+  color: rgb(51, 0, 111);
+  font-size: 50px;
+  padding-left: 100px;
+  font-weight: 300;
+  /*align-content: middle;*/
+  vertical-align: middle;
 }
 
 .cirg-logo {
+  display: flex;
   align-self: center;
-  width 300px;
+  /*width 300px;*/
+  height: 60px;
+  align-content: center;
+  justify-content: center;
+  line-height: 60px;
 }
 
 .mdl-layout__header {
-  background-color: rgb(51, 0, 111);
+  background-color: white;
 }
