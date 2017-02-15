@@ -4960,7 +4960,8 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
     display: block
 }
 
-@media screen and (max-width:1024px) {
+/* 1024 -> 900 */
+@media screen and (max-width:900px) {
     .mdl-layout__header>.mdl-layout-icon {
         left: 16px;
         top: 12px
@@ -4975,7 +4976,8 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
     max-height: 64px
 }
 
-@media screen and (max-width:1024px) {
+/* 1024 -> 900 */
+@media screen and (max-width:900px) {
     .mdl-layout__header.is-compact {
         max-height: 56px
     }
@@ -4985,7 +4987,8 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
     height: 112px
 }
 
-@media screen and (max-width:1024px) {
+/* 1024 -> 900 */
+@media screen and (max-width:900px) {
     .mdl-layout__header.is-compact.has-tabs {
         min-height: 104px
     }
