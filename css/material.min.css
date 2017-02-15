@@ -4,6 +4,7 @@
  * @license Apache-2.0
  * @copyright 2015 Google, Inc.
  * @link https://github.com/google/material-design-lite
+ * modified by University of Washington 2017
  */
 
 @charset "UTF-8";
@@ -4929,6 +4930,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
     transition-property: max-height, box-shadow
 }
 
+/* appear header LE 1024 */
 @media screen and (max-width:1024px) {
     .mdl-layout__header {
         min-height: 56px
@@ -4940,6 +4942,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
     width: calc(100% - 240px)
 }
 
+/* appear "fixed drawer" GE 1025 */
 @media screen and (min-width:1025px) {
     .mdl-layout--fixed-drawer>.mdl-layout__header .mdl-layout__header-row {
         padding-left: 40px
@@ -4989,8 +4992,9 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 }
 
 @media screen and (max-width:1024px) {
-    .mdl-layout__header {
+/* hack    .mdl-layout__header {
         display: none
+        */
     }
     .mdl-layout--fixed-header>.mdl-layout__header {
         display: -webkit-flex;
