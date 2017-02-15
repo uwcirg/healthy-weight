@@ -4,31 +4,23 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
-  <link rel="stylesheet" href="css/material.min.css" media="all" type="text/css">
-  <link rel="stylesheet" href="css/index.css" media="all" type="text/css">
-  <link rel="stylesheet" href="css/materialdesignicons.min.css" media="all" type="text/css" />
   <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <title>Healthy Weight SMART Application</title>
-  <script src="js/material.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
   <script src="https://rawgit.com/smart-on-fhir/client-js/master/dist/fhir-client.min.js"></script>
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 </head>
 
 <body>
   <div id="healthy-weight">
     <div class="mdl-layout mdl-js-layout">
-      <header class="mdl-layout__header mdl-layout__header--fixed">
+      <header id="cirg-header=" class="mdl-layout__header mdl-layout__header--fixed">
         <div class="mdl-layout__header-row no-menu">
-            <div class="cirg-logo-container">
-              <div class="cirg-logo">
-                <img src="https://multisite-dev-www-1.cirg.washington.edu/wp-content/uploads/2014/10/CIRG-UW-header-x-100-300x89.png" height="60px">
-                <span class="app-title">Healthy Weight</span>
-              </div>
+          <div class="cirg-logo-container">
+            <div class="cirg-logo">
+              <img src="https://multisite-dev-www-1.cirg.washington.edu/wp-content/uploads/2014/10/CIRG-UW-header-x-100-300x89.png" height="60px">
+              <span class="app-title">Healthy Weight</span>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/US_CDC_logo.svg/1280px-US_CDC_logo.svg.png" height="60px">
             </div>
+          </div>
         </div>
       </header>
       <main class="mdl-layout__content">
@@ -81,6 +73,5 @@
     </div>
   </div>
 </body>
-<script src="js/healthy-weight.js"></script>
 
 </html>

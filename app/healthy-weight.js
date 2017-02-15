@@ -1,3 +1,9 @@
+import moment from 'moment';
+import Vue from 'vue/dist/vue.min.js';
+
+/* material design */
+require('../node_modules/material-design-lite/material.min.css');
+
 let HealthyWeight = new Vue({
   el: "#healthy-weight",
 

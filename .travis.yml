@@ -8,6 +8,10 @@ addons:
   apt:
     packages:
       sshpass
+before_script:
+  - npm install -g webpack
+script:
+  - npm run build:prod
 deploy:
   - provider: script
     script: scripts/deploy.sh
