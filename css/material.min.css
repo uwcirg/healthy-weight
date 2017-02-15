@@ -4992,9 +4992,9 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 }
 
 @media screen and (max-width:1024px) {
-/* hack    .mdl-layout__header {
-        display: none
-        */
+/* hack  - dang - this didn't work.  change none to flex  - maybe didn't comment enough! */
+		.mdl-layout__header {
+        display: flex
     }
     .mdl-layout--fixed-header>.mdl-layout__header {
         display: -webkit-flex;
