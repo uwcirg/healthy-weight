@@ -4931,7 +4931,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 }
 
 /* appear header LE 1024 */
-@media screen and (max-width:1024px) {
+@media screen and (max-width:900px) {
     .mdl-layout__header {
         min-height: 56px
     }
@@ -4943,7 +4943,7 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
 }
 
 /* appear "fixed drawer" GE 1025 */
-@media screen and (min-width:1025px) {
+@media screen and (min-width:901px) {
     .mdl-layout--fixed-drawer>.mdl-layout__header .mdl-layout__header-row {
         padding-left: 40px
     }
