@@ -37,7 +37,6 @@ let HealthyWeight = new Vue({
       this.smart = smart;
       // Fetch patient demographics
       this.smart.patient.read().then((patient) => {
-
         this.$set(this.patient, 'id', patient.id);
 
         this.$set(this.patient, 'birthDate', patient.birthDate);
@@ -57,9 +56,9 @@ let HealthyWeight = new Vue({
             '_count': 1
           }
         }).then((bundle) => {
-
           this.$set(this.patient, 'weight', bundle.data.entry["0"].resource.valueQuantity.value);
           this.$set(this.patient, 'weightUnit', bundle.data.entry["0"].resource.valueQuantity.unit);
+          this.$set(this.patient, 'weightDate', moment(bundle.data.entry["0"].resource.effectiveDateTime).format('YYYY-DD-MM'));
         });
       }).then(() => {
         // Fetch latest height
@@ -85,7 +84,7 @@ let HealthyWeight = new Vue({
           // Setup chart data
           this.bmiChartData = {
             datasets: [{
-              label: 'Extensive Exercise',
+              label: 'Extensive',
               data: [{
                 x: 15,
                 y: 18
@@ -111,7 +110,7 @@ let HealthyWeight = new Vue({
               backgroundColor: "rgba(75,192,75,0.4)",
               borderColor: "rgba(75,192,75,1)",
             }, {
-              label: 'Adequate Exercise',
+              label: 'Adequate',
               data: [{
                 x: 15,
                 y: 22
@@ -137,7 +136,7 @@ let HealthyWeight = new Vue({
               backgroundColor: "rgba(255,165,0,0.4)",
               borderColor: "rgba(255,165,0,1)",
             }, {
-              label: 'Insufficient Exercise',
+              label: 'Insufficient',
               data: [{
                 x: 15,
                 y: 26
@@ -163,7 +162,7 @@ let HealthyWeight = new Vue({
               backgroundColor: "rgba(192,75,75,0.4)",
               borderColor: "rgba(192,75,75,1)",
             }, {
-              label: 'Patient BMI & Activity Level',
+              label: 'Patient',
               data: patientChartData,
               backgroundColor: "rgba(75,75,75,0.4)",
               borderColor: "rgba(16,16,16,1)",
@@ -178,6 +177,7 @@ let HealthyWeight = new Vue({
 
         // Build chart
         var ctx = document.getElementById("BMIChart");
+
         var BMIChart = new Chart(ctx, {
           type: 'scatter',
           data: chartData,
@@ -202,6 +202,7 @@ let HealthyWeight = new Vue({
         });
         this.chart = BMIChart;
       }).then(this.addBMIToChart);
+
     },
   },
 });

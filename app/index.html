@@ -12,7 +12,7 @@
 <body>
   <div id="healthy-weight">
     <div class="mdl-layout mdl-js-layout">
-      <header id="cirg-header=" class="mdl-layout__header mdl-layout__header--fixed">
+      <header id="cirg-header" class="mdl-layout__header mdl-layout__header--fixed">
         <div class="mdl-layout__header-row no-menu">
           <div class="cirg-logo-container">
             <div class="cirg-logo">
@@ -29,12 +29,32 @@
             <div class="mdl-cell mdl-cell--2-col"></div>
             <div class="mdl-cell mdl-cell--8-col">
 
-              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp cird-card">
                 <div class="mdl-card__title">
                   <div class="mdl-card__title-text">{{ patient.name.given }} {{ patient.name.family }}</div>
                 </div>
+                <div class="cirg-row">
+                  <span class="mdl-card__supporting-text">Sex: {{ patient.gender }}</span>
+                  <span class="mdl-card__supporting-text">Birthdate: {{ patient.birthDate }}</span>
+                  <span class="mdl-card__supporting-text mrn">MRN: {{ patient.identifiers[0].value }}</span>
+                </div>
+                <!-- <div id="identifiers" class="mdl-card__supporting-text">
+                  <ul class="id-list">
+                    <li v-for="(item, index) in patient.identifiers">
+                      UWM ID#{{ index }}{{ item.value }}
+                    </li>
+                  </ul>
+              </div>-->
+            </div>
+              <p></p>
+
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <div class="mdl-card__title">
+                  <div class="mdl-card__title-text">Clinical Observations</div>
+                </div>
+                <div class="cirg-row">
                 <div class="mdl-card__supporting-text">
-                  Birthdate: {{ patient.birthDate }}
+                  {{ patient.weightDate }}:
                 </div>
                 <div class="mdl-card__supporting-text">
                   Weight: {{ patient.weight }} {{ patient.weightUnit }}
@@ -45,24 +65,19 @@
                 <div class="mdl-card__supporting-text">
                   BMI: {{ patient.bmi }}
                 </div>
-                <div class="mdl-card__supporting-text">
-                  Identifiers
-                  <ul>
-                    <li v-for="(item, index) in patient.identifiers">
-                      {{ item.value }} <span class="idsystem">{{ item.system }} </span>
-                    </li>
-                  </ul>
-                </div>
-                <div class="mdl-card__menu">
-                  <i v-bind:class="{ 'mdi-human-female': patient.gender == 'female', 'mdi-human-male': patient.gender == 'male' }" class="mdi mdi-48px"></i>
-                </div>
+              </div>
               </div>
               <p></p>
+
               <div class="demo-card-wide mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">
                   <div class="charttitle">Median BMI for Three Exercise Levels</div>
                 </div>
-                <canvas class="chartCanvas" id="BMIChart"></canvas>
+                <div id="char-container-container">
+                  <div id="chart-container">
+                    <canvas class="chartCanvas" id="BMIChart"></canvas>
+                  </div>
+                </div>
               </div>
               <p></p>
             </div>

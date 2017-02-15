@@ -17,11 +17,18 @@ html body #health-weight {
 }
 
 .mdl-card__title-text {
-  font-size: 50px;
+  font-size: 24px;
+}
+
+.mdl-card__title {
+  padding: 10px;
 }
 
 .mdl-card__supporting-text {
-  font-size: 25px;
+  font-size: 18px;
+  padding: 10px;
+  padding-top: 0px;
+  width: auto;
 }
 
 .no-menu {
@@ -29,8 +36,13 @@ html body #health-weight {
 }
 
 .charttitle {
-  font-size: 35px;
+  font-size: 24px;
   font-weight: 200;
+}
+
+.cirg-row {
+  display: flex;
+  justify-content: space-between;
 }
 
 .idsystem {
@@ -39,24 +51,60 @@ html body #health-weight {
   color: #ddd;
 }
 
+.id-list {
+  list-style-type: none;
+}
+
+#identifiers {
+  padding: 5px;
+}
+
 #cirg-header {
   display: flex !important;
+  min-height: 65px !important;
+}
+
+#char-container-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+#chart-container {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.mrn {
+  /*padding-left: 310px;*/
+    /*float: right;
+    width: 105px;*/
+}
+
+#healthy-weight > div > main > div > div > div.mdl-cell.mdl-cell--8-col > div:nth-child(1) {
+  min-height: 80px !important;
+}
+
+#healthy-weight > div > main > div > div > div.mdl-cell.mdl-cell--8-col > div:nth-child(3) {
+  min-height: 80px !important;
 }
 
 .cirg-logo-container {
   display: flex;
-  align: center;
-  /*align-content: middle;*/
-  justify-content: space-around;
+  /*align: center;*/
+  /*align-content: center;*/
+  justify-content: center;
   width: 100%;
 }
 
 .app-title {
   color: rgb(51, 0, 111);
+  /*color: red;*/
   /*color: white;*/
-  font-size: 50px;
-  padding-left: 100px;
-  padding-right: 100px;
+  font-size: 30px;
+  /*padding-left: 80px;
+  padding-right: 80px;*/
   font-weight: 300;
   /*align-content: middle;*/
   vertical-align: middle;
@@ -70,6 +118,8 @@ html body #health-weight {
   align-content: center;
   justify-content: center;
   line-height: 60px;
+  width: 80%;
+  justify-content: space-around;
 }
 
 .mdl-layout__header {

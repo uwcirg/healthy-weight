@@ -51,10 +51,10 @@ plugins.push(new BrowserSyncPlugin({
   },
   port: 9000,
   open: false,
-  https: {
-    key: "key.pem",
-    cert: "cert.pem",
-  }
+  // https: {
+  //   key: "key.pem",
+  //   cert: "cert.pem",
+  // }
 }, {
   reload: false,
 }));
