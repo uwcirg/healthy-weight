@@ -4991,9 +4991,17 @@ fieldset[disabled] .mdl-checkbox .mdl-checkbox__ripple-container .mdl-ripple,
     }
 }
 
-@media screen and (max-width:1024px) {
-/* hack  - dang - this didn't work.  change none to flex  - maybe didn't comment enough! */
+/* was 1024 - not sure if it's safe to change only this one */
+@media screen and (max-width:900px) {
+/* hack  change none to flex below 
+	this worked to preserve header 
+	two issues:
+		header shadow goes away below 1024 (maybe height is the issue) 
+		header format falls apart when things get smaller 
+			- what controls header layout? 
+		*/
 		.mdl-layout__header {
+		/* this instance only changed none -> flex */
         display: flex
     }
     .mdl-layout--fixed-header>.mdl-layout__header {
