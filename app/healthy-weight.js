@@ -41,7 +41,10 @@ let HealthyWeight = new Vue({
 
         this.$set(this.patient, 'birthDate', patient.birthDate);
         this.$set(this.patient, 'gender', patient.gender);
-        this.$set(this.patient, 'identifiers', patient.identifier);
+
+        // this.$set(this.patient, 'identifiers', patient.identifier);
+        this.$set(this.patient, 'mrn', patient.identifier[0].value);
+
         this.$set(this.patient.name, 'given', patient.name[0].given[0]);
         this.$set(this.patient.name, 'family', patient.name[0].family[0]);
 

@@ -9,7 +9,8 @@
     "build": "npm run clean && webpack --progress --colors --env.mode=production --env.target=web",
     "build:dev": "npm run clean && webpack --progress --colors --env.mode=dev --env.target=web",
     "build:prod": "npm run test && npm run build",
-    "watch": "webpack --progress --colors --watch --env.mode=deploy --env.target=web"
+    "watch": "webpack --progress --colors --watch --env.mode=deploy --env.target=web",
+    "livereload": "webpack-dev-server --port 8999 --watch-content-base --inline --hot --env.mode=dev --env.target=web"
   },
   "repository": {
     "type": "git",
