@@ -10,7 +10,7 @@
     "build:dev": "npm run clean && webpack --progress --colors --env.mode=dev --env.target=web",
     "build:prod": "npm run test && npm run build",
     "watch": "webpack --progress --colors --watch --env.mode=deploy --env.target=web",
-    "livereload": "webpack-dev-server --port 8999 --watch-content-base --inline --hot --env.mode=dev --env.target=web"
+    "livereload": "webpack-dev-server --port 8999 --inline --hot --env.mode=dev --env.target=web"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
     "chart.js": "^2.5.0",
     "material-design-lite": "^1.3.0",
     "moment": "^2.17.1",
+    "superagent": "^3.4.4",
     "vue": "^2.1.10",
     "webpack": "^2.2.1"
   },

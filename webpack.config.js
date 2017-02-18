@@ -114,13 +114,6 @@ const webpackConfig = {
   },
   resolve: {
     extensions: ['.js', '.css', '.html'],
-    // root: [
-    //   `${__dirname}/app`,
-    //   `${__dirname}/node_modules`,
-    // ],
-    // moduleDirectories: [
-    //   nodeModulesDir,
-    // ]
   },
   plugins,
   externals: nodeModules,

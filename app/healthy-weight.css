@@ -76,17 +76,7 @@ html body #health-weight {
   justify-content: center;
 }
 
-.mrn {
-  /*padding-left: 310px;*/
-    /*float: right;
-    width: 105px;*/
-}
-
-#healthy-weight > div > main > div > div > div.mdl-cell.mdl-cell--8-col > div:nth-child(1) {
-  min-height: 80px !important;
-}
-
-#healthy-weight > div > main > div > div > div.mdl-cell.mdl-cell--8-col > div:nth-child(3) {
+.cirg-card {
   min-height: 80px !important;
 }
 
@@ -98,8 +88,27 @@ html body #health-weight {
   width: 100%;
 }
 
+#tabs-header {
+  height: 48px;
+}
+
+.cirg-tab-header {
+  height: 100%;
+  /*height: 48px !important;*/
+  background-color: rgb(51, 0, 111);
+}
+
+.mdl-layout__tab is-active {
+  border-bottom-color: white;
+}
+
+.cirg-tab-panel {
+  padding-top: 10px;
+}
+
 .app-title {
-  color: rgb(51, 0, 111);
+  /*color: rgb(51, 0, 111);*/
+  color: black;
   /*color: red;*/
   /*color: white;*/
   font-size: 30px;

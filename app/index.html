@@ -29,7 +29,7 @@
             <div class="mdl-cell mdl-cell--2-col"></div>
             <div class="mdl-cell mdl-cell--8-col">
 
-              <div class="demo-card-wide mdl-card mdl-shadow--2dp cird-card">
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp cirg-card">
                 <div class="mdl-card__title">
                   <div class="mdl-card__title-text">{{ patient.name.given }} {{ patient.name.family }}</div>
                 </div>
@@ -45,27 +45,36 @@
                     </li>
                   </ul>
               </div>-->
-            </div>
+              </div>
               <p></p>
 
-              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp cirg-card">
                 <div class="mdl-card__title">
                   <div class="mdl-card__title-text">Clinical Observations</div>
                 </div>
                 <div class="cirg-row">
-                <div class="mdl-card__supporting-text">
-                  {{ patient.weightDate }}:
+                  <div class="mdl-card__supporting-text">
+                    {{ patient.weightDate }}:
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    Weight: {{ patient.weight }} {{ patient.weightUnit }}
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    Height: {{ patient.height }} {{ patient.heightUnit }}
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    BMI: {{ patient.bmi }}
+                  </div>
                 </div>
-                <div class="mdl-card__supporting-text">
-                  Weight: {{ patient.weight }} {{ patient.weightUnit }}
+
+                <div v-for="weight in patient.weights" class="cirg-row">
+                  <div class="mdl-card__supporting-text">
+                    {{ weight.date }}:
+                  </div>
+                  <div class="mdl-card__supporting-text">
+                    Weight: {{ weight.value }} {{ weight.unit }}
+                  </div>
                 </div>
-                <div class="mdl-card__supporting-text">
-                  Height: {{ patient.height }} {{ patient.heightUnit }}
-                </div>
-                <div class="mdl-card__supporting-text">
-                  BMI: {{ patient.bmi }}
-                </div>
-              </div>
               </div>
               <p></p>
 
@@ -80,6 +89,100 @@
                 </div>
               </div>
               <p></p>
+
+              <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                <!-- <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+                  <header class="mdl-layout__header">
+                    <div class="mdl-layout__tab-bar mdl-js-ripple-effect cirg-tab-header">
+                      <a href="#fixed-tab-1" class="mdl-layout__tab is-active">Exercise</a>
+                      <a href="#fixed-tab-2" class="mdl-layout__tab">Diet</a>
+                      <a href="#fixed-tab-3" class="mdl-layout__tab">Occupation</a>
+                    </div>
+                  </header>
+                  <main class="mdl-layout__content">
+                    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+                      <div class="page-content">
+                        tab1
+                      </div>
+                    </section>
+                    <section class="mdl-layout__tab-panel" id="fixed-tab-2">
+                      <div class="page-content">
+                      tab2
+                      </div>
+                    </section>
+                    <section class="mdl-layout__tab-panel" id="fixed-tab-3">
+                      <div class="page-content">
+                        <div class="mdl-card__supporting-text">
+                          Occupation: {{ patient.cirg.occupation_23 }}
+                        </div>
+                      </div>
+                    </section>
+                  </main>
+              </div> -->
+
+
+                <!-- MDL Tab Container -->
+                <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+                  <!-- Tab Bars -->
+                  <div class="mdl-tabs__tab-bar">
+                    <a href="#exercise-panel" class="mdl-tabs__tab is-active">Exercise</a>
+                    <a href="#diet-panel" class="mdl-tabs__tab">Diet</a>
+                    <a href="#occupation-panel" class="mdl-tabs__tab">Occupation</a>
+                    <a href="#sleep-panel" class="mdl-tabs__tab">Sleep</a>
+                  </div>
+
+                  <!-- MDL tab panels, is-active to denote currently active -->
+                  <div class="mdl-tabs__panel is-active cirg-tab-panel" id="exercise-panel">
+                    <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text">
+                      Occupation: {{ patient.cirg.occupation_23 }}
+                    </div>
+                  </div>
+
+                  <!-- MDL Tab panel 2 -->
+                  <div class="mdl-tabs__panel cirg-tab-panel" id="diet-panel">
+                    <div v-if="patient.cirg.freq_veg" class="mdl-card__supporting-text">
+                      Veg (freq): {{ patient.cirg.freq_veg }}
+                    </div>
+                    <div v-if="patient.cirg.freq_fruit" class="mdl-card__supporting-text">
+                      Fruit (freq): {{ patient.cirg.freq_fruit }}
+                    </div>
+                  </div>
+
+                  <!-- MDL Tab panel 3 -->
+                  <div class="mdl-tabs__panel cirg-tab-panel" id="occupation-panel">
+                    <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text">
+                      Occupation: {{ patient.cirg.occupation_23 }}
+                    </div>
+                    <div v-if="patient.cirg.occupation_type" class="mdl-card__supporting-text">
+                      Type: {{ patient.cirg.occupation_type }}
+                    </div>
+                    <div v-if="patient.cirg.occupation_schedule" class="mdl-card__supporting-text">
+                      Schedule: {{ patient.cirg.occupation_schedule }}
+                    </div>
+                    <div v-if="patient.cirg.occupation_hours" class="mdl-card__supporting-text">
+                      Hours: {{ patient.cirg.occupation_hours }} / week
+                    </div>
+                    <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
+                      Start: {{ patient.cirg.occupation_start }}
+                    </div>
+                    <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
+                      Stop: {{ patient.cirg.occupation_stop }}
+                    </div>
+                  </div>
+
+                  <div class="mdl-tabs__panel cirg-tab-panel" id="sleep-panel">
+                    <div v-if="patient.cirg.bed_time" class="mdl-card__supporting-text">
+                      Bed time: {{ patient.cirg.bed_time }}
+                    </div>
+                    <div v-if="patient.cirg.sleep_quantity" class="mdl-card__supporting-text">
+                      Sleep quantity: {{ patient.cirg.sleep_quantity }} hrs
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <p></p>
+
             </div>
             <div class="mdl-cell mdl-cell--2-col"></div>
           </div>

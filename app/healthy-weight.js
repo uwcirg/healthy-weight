@@ -1,8 +1,12 @@
 import moment from 'moment';
+import request from 'superagent';
 import Vue from 'vue/dist/vue.min.js';
 
 /* material design */
 require('../node_modules/material-design-lite/material.min.css');
+
+const CORS_PROXY = 'https://crossorigin.me/';
+const CIRG_API_BASE = 'https://ihe.cirg.washington.edu/himss2017/api.php/';
 
 let HealthyWeight = new Vue({
   el: "#healthy-weight",
@@ -12,6 +16,8 @@ let HealthyWeight = new Vue({
     patient: {
       name: {},
       identifiers: [],
+      cirg: {},
+      weights: [],
     },
   },
 
@@ -21,6 +27,22 @@ let HealthyWeight = new Vue({
   },
 
   methods: {
+
+    getCIRGdata: ( /** identifiers */ ) => {
+      const identifiers = [{
+        value: 29731,
+      }];
+
+      // fix wrong content type
+      request.parse['text/html'] = JSON.parse;
+
+      return request
+        .get(CORS_PROXY + CIRG_API_BASE + '29731')
+        .then((res) => {
+          console.log(res);
+          HealthyWeight.patient.cirg = res.body;
+        });
+    },
 
     calculateBMI: function(height, weight) {
       let bmi = weight / (height * height);
@@ -56,9 +78,19 @@ let HealthyWeight = new Vue({
           type: 'Observation',
           query: {
             code: '3141-9',
-            '_count': 1
+            // '_count': 1
           }
         }).then((bundle) => {
+          let weights = bundle.data.entry.map((x) => {
+            return {
+              value: x.resource.valueQuantity.value,
+              unit: x.resource.valueQuantity.unit,
+              date: moment(x.resource.effectiveDateTime).format('YYYY-MM-DD'),
+            }
+          });
+
+          // this.$set(this.patient, 'weights', weights);
+
           this.$set(this.patient, 'weight', bundle.data.entry["0"].resource.valueQuantity.value);
           this.$set(this.patient, 'weightUnit', bundle.data.entry["0"].resource.valueQuantity.unit);
           this.$set(this.patient, 'weightDate', moment(bundle.data.entry["0"].resource.effectiveDateTime).format('YYYY-DD-MM'));
@@ -204,7 +236,9 @@ let HealthyWeight = new Vue({
           }
         });
         this.chart = BMIChart;
-      }).then(this.addBMIToChart);
+      }).then(() => {
+        return this.getCIRGdata();
+      });
 
     },
   },
