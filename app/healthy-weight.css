@@ -55,6 +55,10 @@ html body #health-weight {
   color: #ddd;
 }
 
+#caps {
+  text-transform: capitalize;
+}
+
 .id-list {
   list-style-type: none;
 }
