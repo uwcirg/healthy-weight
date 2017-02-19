@@ -80,7 +80,7 @@
 
               <div class="demo-card-wide mdl-card mdl-shadow--2dp">
                 <div class="mdl-card__title">
-                  <div class="charttitle">Median BMI for Three Physical Activity Levels</div>
+                  <div class="charttitle">Sex-specific Median BMI for Three Physical Activity Levels</div>
                 </div>
                 <div id="char-container-container">
                   <div id="chart-container">
@@ -143,22 +143,21 @@
 
                   <!-- MDL Tab panel 2 -->
                   <div class="mdl-tabs__panel cirg-tab-panel" id="diet-panel">
-                    <div v-if="patient.cirg.freq_veg">
-                      <div v-if="patient.cirg.freq_veg" class="mdl-card__supporting-text">
-                        Water: {{ patient.cirg.freq_water }}/day, Veg: {{ patient.cirg.freq_veg }}/day, Fruit: {{ patient.cirg.freq_fruit }}/day
+                      <div class="mdl-card__supporting-text">
+                        <span v-if="patient.cirg.freq_water">Water: {{ patient.cirg.freq_water }}/day,</span>
+                        <span v-if="patient.cirg.freq_veg">Veg: {{ patient.cirg.freq_veg }}/day,</span>
+                        <span v-if="patient.cirg.freq_fruit">Fruit: {{ patient.cirg.freq_fruit }}/day</span>
                       </div>
-                      <div v-if="patient.cirg.freq_soda" class="mdl-card__supporting-text">
-                        Soda: {{ patient.cirg.freq_soda }}/day, Sports Drinks: {{ patient.cirg.freq_sports_drink }}/day, Fruit Juice: {{ patient.cirg.freq_fruit_juice }}/day, Fast Food: {{ patient.cirg.freq_fast_food }}/day
+                      <div class="mdl-card__supporting-text">
+                        <span v-if="patient.cirg.freq_soda">Soda: {{ patient.cirg.freq_soda }}/day,</span>
+                        <span v-if="patient.cirg.freq_sports_drink">Sports Drinks: {{ patient.cirg.freq_sports_drink }}/day,</span>
+                        <span v-if="patient.cirg.freq_fruit_juice">Fruit Juice: {{ patient.cirg.freq_fruit_juice }}/day,</span>
+                        <span v-if="patient.cirg.freq_fast_food">Fast Food: {{ patient.cirg.freq_fast_food }}/day</span>
                       </div>
-                    </div>
-                    <div v-else class="mdl-card__supporting-text">
-                      No diet data found for patient.
-                    </div>
                   </div>
 
                   <!-- MDL Tab panel 3 -->
                   <div class="mdl-tabs__panel cirg-tab-panel" id="occupation-panel">
-                    <div v-if="patient.cirg.occupation_23">
                       <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text">
                         Occupation: {{ patient.cirg.occupation_23 }}
                       </div>
@@ -177,26 +176,16 @@
                       <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
                         Stop: {{ patient.cirg.occupation_stop }}
                       </div>
-                    </div>
-                    <div v-else class="mdl-card__supporting-text">
-                      No occupation data found for patient.
-                    </div>
                   </div>
 
                   <div class="mdl-tabs__panel cirg-tab-panel" id="sleep-panel">
-                    <div v-if="patient.cirg.sleep_quantity">
                       <div v-if="patient.cirg.bed_time" class="mdl-card__supporting-text">
                         Bed time: {{ patient.cirg.bed_time }}
                       </div>
                       <div v-if="patient.cirg.sleep_quantity" class="mdl-card__supporting-text">
                         Sleep quantity: {{ patient.cirg.sleep_quantity }} hrs
                       </div>
-                    </div>
-                    <div v-else class="mdl-card__supporting-text">
-                      No sleep data found for patient.
-                    </div>
                   </div>
-
                 </div>
               </div>
               <p></p>
