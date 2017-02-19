@@ -9,6 +9,8 @@ const CORS_PROXY = 'https://crossorigin.me/';
 // const CORS_PROXY = '';
 const CIRG_API_BASE = 'https://ihe.cirg.washington.edu/himss2017/api.php/';
 
+const PREFERRED_ID_OID = 'urn:oid:1.2.5.8.2.7';
+
 let HealthyWeight = new Vue({
   el: "#healthy-weight",
 
@@ -40,7 +42,6 @@ let HealthyWeight = new Vue({
       return request
         .get(CORS_PROXY + CIRG_API_BASE + '29731')
         .end((err, res) => {
-          console.log(res);
           HealthyWeight.patient.cirg = res.body;
         });
     },
@@ -56,6 +57,16 @@ let HealthyWeight = new Vue({
       return parseFloat(age.toFixed(1));
     },
 
+    getPreferredID: function(ids) {
+      let id = ids[0].value;
+
+      ids.forEach((value, key, array) => {
+        if(value.system && value.system == PREFERRED_ID_OID) {
+          id = value.value;
+        }
+      });
+    },
+
     loadPatient: function(smart) {
       this.smart = smart;
       // Fetch patient demographics
@@ -66,7 +77,7 @@ let HealthyWeight = new Vue({
         this.$set(this.patient, 'gender', patient.gender);
 
         // this.$set(this.patient, 'identifiers', patient.identifier);
-        this.$set(this.patient, 'mrn', patient.identifier[0].value);
+        this.$set(this.patient, 'mrn', this.getPreferredID(patient.identifier));
 
         this.$set(this.patient.name, 'given', patient.name[0].given[0]);
         this.$set(this.patient.name, 'family', patient.name[0].family[0]);
