@@ -267,6 +267,10 @@ let HealthyWeight = new Vue({
                   max: 39,
                   min: 15,
                   stepSize: 3
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'MEDIAN BMI',
                 }
               }],
               xAxes: [{
@@ -274,6 +278,10 @@ let HealthyWeight = new Vue({
                   max: 70,
                   min: 15,
                   stepSize: 10
+                },
+                scaleLabel: {
+                  display: true,
+                  labelString: 'AGE',
                 }
               }]
             }
