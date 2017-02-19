@@ -39,7 +39,7 @@ let HealthyWeight = new Vue({
 
       return request
         .get(CORS_PROXY + CIRG_API_BASE + '29731')
-        .then((res) => {
+        .end((err, res) => {
           console.log(res);
           HealthyWeight.patient.cirg = res.body;
         });
