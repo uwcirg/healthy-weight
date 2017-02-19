@@ -131,27 +131,27 @@
                     <a href="#sleep-panel" class="mdl-tabs__tab">Sleep</a>
                   </div>
 
-                  <div class="mdl-tabs__panel is-active cirg-tab-panel" id="occupation-panel">
-                    <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text">
+                  <div class="mdl-tabs__panel is-active cirg-tab-panel risk-text" id="occupation-panel">
+                    <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text risk-text">
                       Occupation: {{ patient.cirg.occupation_23 }}
                     </div>
-                    <div v-if="patient.cirg.occupation_type" class="mdl-card__supporting-text">
+                    <div v-if="patient.cirg.occupation_type" class="mdl-card__supporting-text risk-text">
                       Type: {{ patient.cirg.occupation_type }}
                     </div>
-                    <div v-if="patient.cirg.occupation_schedule" class="mdl-card__supporting-text">
+                    <div v-if="patient.cirg.occupation_schedule" class="mdl-card__supporting-text risk-text">
                       Schedule: {{ patient.cirg.occupation_schedule }}
                     </div>
-                    <div v-if="patient.cirg.occupation_hours" class="mdl-card__supporting-text">
+                    <div v-if="patient.cirg.occupation_hours" class="mdl-card__supporting-text risk-text">
                       Hours: {{ patient.cirg.occupation_hours }} / week
                     </div>
-                    <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
+                    <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text risk-text">
                       Start: {{ patient.cirg.occupation_start }}
                     </div>
                   </div>
 
                   <!-- MDL tab panels, is-active to denote currently active -->
-                  <div class="mdl-tabs__panel cirg-tab-panel" id="exercise-panel">
-                    <div v-if="patient.cirg.freq_physical" class="mdl-card__supporting-text">
+                  <div class="mdl-tabs__panel cirg-tab-panel risk-panel" id="exercise-panel">
+                    <div v-if="patient.cirg.freq_physical" class="mdl-card__supporting-text risk-text">
                       Physical Activity: {{ patient.cirg.freq_physical }} time(s) weekly for {{ patient.cirg.physical_quantity }} mins
                       <br/><br/>
                       <span v-if="patient.cirg.ready_exercise">Readiness to change: {{ patient.cirg.ready_exercise }} / 10</span>
@@ -162,34 +162,34 @@
                   </div>
 
                   <!-- MDL Tab panel 2 -->
-                  <div class="mdl-tabs__panel cirg-tab-panel" id="diet-panel">
-                    <div class="mdl-card__supporting-text">
+                  <div class="mdl-tabs__panel cirg-tab-panel risk-panel" id="diet-panel">
+                    <div class="mdl-card__supporting-text risk-text">
                       <span v-if="patient.cirg.freq_water">Water: {{ patient.cirg.freq_water }}/day,</span>
                       <span v-if="patient.cirg.freq_veg">Veg: {{ patient.cirg.freq_veg }}/day,</span>
                       <span v-if="patient.cirg.freq_fruit">Fruit: {{ patient.cirg.freq_fruit }}/day</span>
                     </div>
-                    <div class="mdl-card__supporting-text">
+                    <div class="mdl-card__supporting-text risk-text">
                       <span v-if="patient.cirg.freq_soda">Soda: {{ patient.cirg.freq_soda }}/day,</span>
                       <span v-if="patient.cirg.freq_sports_drink">Sports Drinks: {{ patient.cirg.freq_sports_drink }}/day,</span>
                       <span v-if="patient.cirg.freq_fruit_juice">Fruit Juice: {{ patient.cirg.freq_fruit_juice }}/day,</span>
                       <span v-if="patient.cirg.freq_fast_food">Fast Food: {{ patient.cirg.freq_fast_food }}/day</span>
                     </div>
                     <br/>
-                    <span v-if="patient.cirg.ready_nutrition" class="mdl-card__supporting-text">Readiness to change: {{ patient.cirg.ready_nutrition }} / 10</span>
+                    <span v-if="patient.cirg.ready_nutrition" class="mdl-card__supporting-text risk-text">Readiness to change: {{ patient.cirg.ready_nutrition }} / 10</span>
                   </div>
 
                   <!-- MDL Tab panel 3 -->
 
 
-                  <div class="mdl-tabs__panel cirg-tab-panel" id="sleep-panel">
-                    <div v-if="patient.cirg.bed_time" class="mdl-card__supporting-text">
+                  <div class="mdl-tabs__panel cirg-tab-panel risk-panel" id="sleep-panel">
+                    <div v-if="patient.cirg.bed_time" class="mdl-card__supporting-text risk-text">
                       Bed time: {{ patient.cirg.bed_time }}
                     </div>
-                    <div v-if="patient.cirg.sleep_quantity" class="mdl-card__supporting-text">
+                    <div v-if="patient.cirg.sleep_quantity" class="mdl-card__supporting-text risk-text">
                       Sleep quantity: {{ patient.cirg.sleep_quantity }} hrs (Average per 24hrs)
                     </div>
                     <br/>
-                    <span v-if="patient.cirg.ready_sleep" class="mdl-card__supporting-text">Readiness to change: {{ patient.cirg.ready_sleep }} / 10</span>
+                    <span v-if="patient.cirg.ready_sleep" class="mdl-card__supporting-text risk-text">Readiness to change: {{ patient.cirg.ready_sleep }} / 10</span>
 
                   </div>
                 </div>
