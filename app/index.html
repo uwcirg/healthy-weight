@@ -53,7 +53,7 @@
                   <div class="mdl-card__title-text">Clinical Observations</div>
                 </div>
                 <div class="cirg-row">
-                  <div class="mdl-card__supporting-text">
+                  <div v-if="patient.weightDate" class="mdl-card__supporting-text">
                     {{ patient.weightDate }}:
                   </div>
                   <div class="mdl-card__supporting-text">
@@ -134,8 +134,7 @@
                   <!-- MDL tab panels, is-active to denote currently active -->
                   <div class="mdl-tabs__panel is-active cirg-tab-panel" id="exercise-panel">
                     <div v-if="patient.cirg.freq_physical" class="mdl-card__supporting-text">
-                      Physical Activity: {{ patient.cirg.freq_physical }} time(s) weekly for {{ patient.cirg.physical_quantity }} mins<br/><br/>
-                      Readiness to change: {{ patient.cirg.ready_exercise }} / 10
+                      Physical Activity: {{ patient.cirg.freq_physical }} time(s) weekly for {{ patient.cirg.physical_quantity }} mins<br/><br/> Readiness to change: {{ patient.cirg.ready_exercise }} / 10
                     </div>
                     <div v-else class="mdl-card__supporting-text">
                       No physical activity data found for patient.
@@ -144,42 +143,57 @@
 
                   <!-- MDL Tab panel 2 -->
                   <div class="mdl-tabs__panel cirg-tab-panel" id="diet-panel">
-                    <div v-if="patient.cirg.freq_veg" class="mdl-card__supporting-text">
-                      Water: {{ patient.cirg.freq_water }}/day, Veg: {{ patient.cirg.freq_veg }}/day, Fruit: {{ patient.cirg.freq_fruit }}/day
+                    <div v-if="patient.cirg.freq_veg">
+                      <div v-if="patient.cirg.freq_veg" class="mdl-card__supporting-text">
+                        Water: {{ patient.cirg.freq_water }}/day, Veg: {{ patient.cirg.freq_veg }}/day, Fruit: {{ patient.cirg.freq_fruit }}/day
+                      </div>
+                      <div v-if="patient.cirg.freq_soda" class="mdl-card__supporting-text">
+                        Soda: {{ patient.cirg.freq_soda }}/day, Sports Drinks: {{ patient.cirg.freq_sports_drink }}/day, Fruit Juice: {{ patient.cirg.freq_fruit_juice }}/day, Fast Food: {{ patient.cirg.freq_fast_food }}/day
+                      </div>
                     </div>
-                    <div v-if="patient.cirg.freq_soda" class="mdl-card__supporting-text">
-                      Soda: {{ patient.cirg.freq_soda }}/day, Sports Drinks: {{ patient.cirg.freq_sports_drink }}/day, Fruit Juice: {{ patient.cirg.freq_fruit_juice }}/day, Fast Food: {{ patient.cirg.freq_fast_food }}/day
+                    <div v-else class="mdl-card__supporting-text">
+                      No diet data found for patient.
                     </div>
                   </div>
 
                   <!-- MDL Tab panel 3 -->
                   <div class="mdl-tabs__panel cirg-tab-panel" id="occupation-panel">
-                    <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text">
-                      Occupation: {{ patient.cirg.occupation_23 }}
+                    <div v-if="patient.cirg.occupation_23">
+                      <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text">
+                        Occupation: {{ patient.cirg.occupation_23 }}
+                      </div>
+                      <div v-if="patient.cirg.occupation_type" class="mdl-card__supporting-text">
+                        Type: {{ patient.cirg.occupation_type }}
+                      </div>
+                      <div v-if="patient.cirg.occupation_schedule" class="mdl-card__supporting-text">
+                        Schedule: {{ patient.cirg.occupation_schedule }}
+                      </div>
+                      <div v-if="patient.cirg.occupation_hours" class="mdl-card__supporting-text">
+                        Hours: {{ patient.cirg.occupation_hours }} / week
+                      </div>
+                      <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
+                        Start: {{ patient.cirg.occupation_start }}
+                      </div>
+                      <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
+                        Stop: {{ patient.cirg.occupation_stop }}
+                      </div>
                     </div>
-                    <div v-if="patient.cirg.occupation_type" class="mdl-card__supporting-text">
-                      Type: {{ patient.cirg.occupation_type }}
-                    </div>
-                    <div v-if="patient.cirg.occupation_schedule" class="mdl-card__supporting-text">
-                      Schedule: {{ patient.cirg.occupation_schedule }}
-                    </div>
-                    <div v-if="patient.cirg.occupation_hours" class="mdl-card__supporting-text">
-                      Hours: {{ patient.cirg.occupation_hours }} / week
-                    </div>
-                    <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
-                      Start: {{ patient.cirg.occupation_start }}
-                    </div>
-                    <div v-if="patient.cirg.occupation_start" class="mdl-card__supporting-text">
-                      Stop: {{ patient.cirg.occupation_stop }}
+                    <div v-else class="mdl-card__supporting-text">
+                      No occupation data found for patient.
                     </div>
                   </div>
 
                   <div class="mdl-tabs__panel cirg-tab-panel" id="sleep-panel">
-                    <div v-if="patient.cirg.bed_time" class="mdl-card__supporting-text">
-                      Bed time: {{ patient.cirg.bed_time }}
+                    <div v-if="patient.cirg.bed_time">
+                      <div v-if="patient.cirg.bed_time" class="mdl-card__supporting-text">
+                        Bed time: {{ patient.cirg.bed_time }}
+                      </div>
+                      <div v-if="patient.cirg.sleep_quantity" class="mdl-card__supporting-text">
+                        Sleep quantity: {{ patient.cirg.sleep_quantity }} hrs
+                      </div>
                     </div>
-                    <div v-if="patient.cirg.sleep_quantity" class="mdl-card__supporting-text">
-                      Sleep quantity: {{ patient.cirg.sleep_quantity }} hrs
+                    <div v-else class="mdl-card__supporting-text">
+                      No sleep data found for patient.
                     </div>
                   </div>
 

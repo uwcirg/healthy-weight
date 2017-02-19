@@ -40,15 +40,26 @@ let HealthyWeight = new Vue({
       request.parse['text/html'] = JSON.parse;
 
       return request
-        .get(CORS_PROXY + CIRG_API_BASE + '29731')
+        .get(CORS_PROXY + CIRG_API_BASE + '29731aa')
         .end((err, res) => {
-          HealthyWeight.patient.cirg = res.body;
+          if(res.body) {
+            HealthyWeight.patient.cirg = res.body;
+          }
         });
     },
 
     calculateBMI: function(height, weight) {
       let bmi = weight / (height * height);
-      return parseFloat(bmi.toFixed(1));
+      if(!isNaN(bmi)) {
+        return parseFloat(bmi.toFixed(1));
+      } else {
+        return 'Unknown';
+      }
+    },
+
+    calculateHistoricalBMIs: function(patient) {
+      // let bmi = weight / (height * height);
+      // return parseFloat(bmi.toFixed(1));
     },
 
     calculateAge: function(birthDate) {
@@ -61,7 +72,7 @@ let HealthyWeight = new Vue({
       let id = ids[0].value;
 
       ids.forEach((value, key, array) => {
-        if(value.system && value.system == PREFERRED_ID_OID) {
+        if (value.system && value.system == PREFERRED_ID_OID) {
           id = value.value;
         }
       });
@@ -95,7 +106,7 @@ let HealthyWeight = new Vue({
         }).then((bundle) => {
           let weights = bundle.data.entry.map((x) => {
 
-            if(x.resource && x.resource.valueQuantity) { // check for the existance of at weight value
+            if (x.resource && x.resource.valueQuantity) { // check for the existance of at weight value
               return {
                 value: x.resource.valueQuantity.value,
                 unit: x.resource.valueQuantity.unit,
@@ -106,9 +117,13 @@ let HealthyWeight = new Vue({
 
           this.$set(this.patient, 'weights', weights);
 
-          this.$set(this.patient, 'weight', bundle.data.entry["0"].resource.valueQuantity.value);
-          this.$set(this.patient, 'weightUnit', bundle.data.entry["0"].resource.valueQuantity.unit);
-          this.$set(this.patient, 'weightDate', moment(bundle.data.entry["0"].resource.effectiveDateTime).format('YYYY-DD-MM'));
+          if (bundle.data.entry["0"].resource.valueQuantity) {
+            this.$set(this.patient, 'weight', bundle.data.entry["0"].resource.valueQuantity.value);
+            this.$set(this.patient, 'weightUnit', bundle.data.entry["0"].resource.valueQuantity.unit);
+            this.$set(this.patient, 'weightDate', moment(bundle.data.entry["0"].resource.effectiveDateTime).format('YYYY-DD-MM'));
+          } else {
+            this.$set(this.patient, 'weight', 'Unknown');
+          }
         });
       }).then(() => {
         // Fetch latest height
@@ -120,11 +135,18 @@ let HealthyWeight = new Vue({
           }
         }).then((bundle) => {
 
-          this.$set(this.patient, 'height', bundle.data.entry["0"].resource.valueQuantity.value);
-          this.$set(this.patient, 'heightUnit', bundle.data.entry["0"].resource.valueQuantity.unit);
+          if (bundle.data.entry["0"].resource.valueQuantity) {
+            this.$set(this.patient, 'height', bundle.data.entry["0"].resource.valueQuantity.value);
+            this.$set(this.patient, 'heightUnit', bundle.data.entry["0"].resource.valueQuantity.unit);
+          } else {
+            this.$set(this.patient, 'height', 'Unknown');
+          }
 
           // Calculate BMI
           this.$set(this.patient, 'bmi', this.calculateBMI(this.patient.height / 100, this.patient.weight));
+
+          // Calculate historical BMIs
+          this.$set(this.patient, 'bmis', this.calculateHistoricalBMIs(this.patient));
 
           let patientChartData = [{
             x: this.patient.age,
