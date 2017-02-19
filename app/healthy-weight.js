@@ -5,7 +5,8 @@ import Vue from 'vue/dist/vue.min.js';
 /* material design */
 require('../node_modules/material-design-lite/material.min.css');
 
-const CORS_PROXY = 'https://crossorigin.me/';
+// const CORS_PROXY = 'https://crossorigin.me/';
+const CORS_PROXY = '';
 const CIRG_API_BASE = 'https://ihe.cirg.washington.edu/himss2017/api.php/';
 
 let HealthyWeight = new Vue({
