@@ -74,6 +74,7 @@ html body #health-weight {
   width: 90%;
   display: flex;
   justify-content: center;
+  padding-bottom: 20px;
 }
 
 .cirg-card {
