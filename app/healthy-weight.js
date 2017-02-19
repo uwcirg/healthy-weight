@@ -5,8 +5,8 @@ import Vue from 'vue/dist/vue.min.js';
 /* material design */
 require('../node_modules/material-design-lite/material.min.css');
 
-// const CORS_PROXY = 'https://crossorigin.me/';
-const CORS_PROXY = '';
+const CORS_PROXY = 'https://crossorigin.me/';
+// const CORS_PROXY = '';
 const CIRG_API_BASE = 'https://ihe.cirg.washington.edu/himss2017/api.php/';
 
 let HealthyWeight = new Vue({
@@ -143,7 +143,8 @@ let HealthyWeight = new Vue({
                 x: 70,
                 y: 24.3
               }],
-              backgroundColor: "rgba(75,192,75,0.4)",
+              // backgroundColor: "rgba(75,192,75,0.4)",
+              backgroundColor: "rgba(255,255,255,0.0)",
               borderColor: "rgba(75,192,75,1)",
             }, {
               label: 'Adequate',
@@ -169,7 +170,8 @@ let HealthyWeight = new Vue({
                 x: 70,
                 y: 28
               }],
-              backgroundColor: "rgba(255,165,0,0.4)",
+              // backgroundColor: "rgba(255,165,0,0.4)",
+              backgroundColor: "rgba(255,255,255,0.0)",
               borderColor: "rgba(255,165,0,1)",
             }, {
               label: 'Insufficient',
@@ -195,12 +197,14 @@ let HealthyWeight = new Vue({
                 x: 70,
                 y: 35
               }],
-              backgroundColor: "rgba(192,75,75,0.4)",
+              // backgroundColor: "rgba(192,75,75,0.4)",
+              backgroundColor: "rgba(255,255,255,0.0)",
               borderColor: "rgba(192,75,75,1)",
             }, {
               label: 'Patient',
               data: patientChartData,
-              backgroundColor: "rgba(75,75,75,0.4)",
+              // backgroundColor: "rgba(75,75,75,0.4)",
+              backgroundColor: "rgba(255,255,255,0.0)",
               borderColor: "rgba(16,16,16,1)",
               pointRadius: 10,
               pointHoverRadius: 10,

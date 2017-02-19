@@ -51,6 +51,7 @@ plugins.push(new BrowserSyncPlugin({
   },
   port: 9000,
   open: false,
+  logLevel: 'debug',
 }, {
   reload: false,
 }));

@@ -133,18 +133,22 @@
 
                   <!-- MDL tab panels, is-active to denote currently active -->
                   <div class="mdl-tabs__panel is-active cirg-tab-panel" id="exercise-panel">
-                    <div v-if="patient.cirg.occupation_23" class="mdl-card__supporting-text">
-                      Occupation: {{ patient.cirg.occupation_23 }}
+                    <div v-if="patient.cirg.freq_physical" class="mdl-card__supporting-text">
+                      Physical Activity: {{ patient.cirg.freq_physical }} time(s) weekly for {{ patient.cirg.physical_quantity }} mins<br/><br/>
+                      Readiness to change: {{ patient.cirg.ready_exercise }} / 10
+                    </div>
+                    <div v-else class="mdl-card__supporting-text">
+                      No physical activity data found for patient.
                     </div>
                   </div>
 
                   <!-- MDL Tab panel 2 -->
                   <div class="mdl-tabs__panel cirg-tab-panel" id="diet-panel">
                     <div v-if="patient.cirg.freq_veg" class="mdl-card__supporting-text">
-                      Veg (freq): {{ patient.cirg.freq_veg }}
+                      Water: {{ patient.cirg.freq_water }}/day, Veg: {{ patient.cirg.freq_veg }}/day, Fruit: {{ patient.cirg.freq_fruit }}/day
                     </div>
-                    <div v-if="patient.cirg.freq_fruit" class="mdl-card__supporting-text">
-                      Fruit (freq): {{ patient.cirg.freq_fruit }}
+                    <div v-if="patient.cirg.freq_soda" class="mdl-card__supporting-text">
+                      Soda: {{ patient.cirg.freq_soda }}/day, Sports Drinks: {{ patient.cirg.freq_sports_drink }}/day, Fruit Juice: {{ patient.cirg.freq_fruit_juice }}/day, Fast Food: {{ patient.cirg.freq_fast_food }}/day
                     </div>
                   </div>
 
