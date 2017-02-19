@@ -22,6 +22,7 @@ let HealthyWeight = new Vue({
       identifiers: [],
       cirg: {},
       weights: [],
+      historicalBmis: [],
     },
   },
 
@@ -59,12 +60,34 @@ let HealthyWeight = new Vue({
     },
 
     calculateHistoricalBMIs: function(patient) {
+
+      if (patient.height) {
+        console.log(patient);
+
+        if (patient.weights) {
+
+          patient.weights.forEach(function(weight, index, array) {
+            patient.historicalBmis.push({
+              age: HealthyWeight.calculateAge(patient.birthDate, weight.date),
+            });
+          });
+        }
+      }
       // let bmi = weight / (height * height);
       // return parseFloat(bmi.toFixed(1));
+      //
+      console.log(patient);
     },
 
-    calculateAge: function(birthDate) {
-      let duration = moment.duration(moment().diff(birthDate));
+    calculateAge: function(birthDate, effectiveDate) {
+      let duration;
+
+      if (effectiveDate) {
+        duration = moment.duration(moment(effectiveDate).diff(birthDate));
+      } else {
+        duration = moment.duration(moment().diff(birthDate));
+      }
+
       let age = duration.asYears();
       return parseFloat(age.toFixed(1));
     },
@@ -161,27 +184,32 @@ let HealthyWeight = new Vue({
             datasets: [{
               label: 'Extensive',
               data: [{
-                x: 15,
-                y: 18
-              }, {
-                x: 20,
-                y: 20
-              }, {
-                x: 30,
-                y: 22
-              }, {
-                x: 40,
-                y: 24
-              }, {
-                x: 50,
-                y: 24.5
-              }, {
-                x: 60,
-                y: 24.5
-              }, {
-                x: 70,
-                y: 24.3
-              }],
+                  x: 15,
+                  y: 18
+                },
+                {
+                  x: 20,
+                  y: 20
+                },
+                {
+                  x: 30,
+                  y: 22
+                },
+                {
+                  x: 40,
+                  y: 24
+                },
+                {
+                  x: 50,
+                  y: 24.5
+                }, {
+                  x: 60,
+                  y: 24.1
+                }, {
+                  x: 70,
+                  y: 22.3
+                }
+              ],
               // backgroundColor: "rgba(75,192,75,0.4)",
               backgroundColor: "rgba(255,255,255,0.0)",
               borderColor: "rgba(75,192,75,1)",
@@ -204,10 +232,10 @@ let HealthyWeight = new Vue({
                 y: 27.5
               }, {
                 x: 60,
-                y: 28
+                y: 27
               }, {
                 x: 70,
-                y: 28
+                y: 26
               }],
               // backgroundColor: "rgba(255,165,0,0.4)",
               backgroundColor: "rgba(255,255,255,0.0)",
@@ -231,10 +259,10 @@ let HealthyWeight = new Vue({
                 y: 34.5
               }, {
                 x: 60,
-                y: 35
+                y: 33.3
               }, {
                 x: 70,
-                y: 35
+                y: 30
               }],
               // backgroundColor: "rgba(192,75,75,0.4)",
               backgroundColor: "rgba(255,255,255,0.0)",
@@ -245,9 +273,9 @@ let HealthyWeight = new Vue({
               // backgroundColor: "rgba(75,75,75,0.4)",
               backgroundColor: "rgba(255,255,255,0.0)",
               borderColor: "rgba(16,16,16,1)",
-              pointRadius: 10,
+              pointRadius: 7,
               pointHoverRadius: 10,
-              pointBorderWidth: 4
+              pointBorderWidth: 3
             }]
           }
         });
@@ -316,11 +344,11 @@ let HealthyWeight = new Vue({
               ctx.fillRect(x_start, red.start, chartArea.right - x_start, (red.stop - red.start));
 
               // 25 - 30 yellow
-              ctx.fillStyle = 'rgba(255,165,0,0.2)';//chart.config.options.chartArea.backgroundColor;
+              ctx.fillStyle = 'rgba(255,165,0,0.2)'; //chart.config.options.chartArea.backgroundColor;
               ctx.fillRect(x_start, yellow.start, chartArea.right - x_start, (yellow.stop - yellow.start));
 
               // 20 - 25 green
-              ctx.fillStyle = 'rgba(75,192,75,0.2)';//chart.config.options.chartArea.backgroundColor;
+              ctx.fillStyle = 'rgba(75,192,75,0.2)'; //chart.config.options.chartArea.backgroundColor;
               ctx.fillRect(x_start, green.start, chartArea.right - x_start, (green.stop - green.start));
 
 
@@ -334,40 +362,40 @@ let HealthyWeight = new Vue({
                *
                */
 
-               // red box
-               let red_kids = {};
-               red_kids.percent = (39 - 27) / numeric_range;
-               red_kids.pixels = red_kids.percent * pixel_range;
-               red_kids.start = top;
-               red_kids.stop = red_kids.start + red_kids.pixels;
+              // red box
+              let red_kids = {};
+              red_kids.percent = (39 - 27) / numeric_range;
+              red_kids.pixels = red_kids.percent * pixel_range;
+              red_kids.start = top;
+              red_kids.stop = red_kids.start + red_kids.pixels;
 
-               // > 27 red
-               ctx.fillStyle = 'rgba(192,75,75,0.2)';
-               ctx.fillRect(left, red_kids.start, x_start - left, (red_kids.stop - red_kids.start));
+              // > 27 red
+              ctx.fillStyle = 'rgba(192,75,75,0.2)';
+              ctx.fillRect(left, red_kids.start, x_start - left, (red_kids.stop - red_kids.start));
 
-               // yellow box
-               let yellow_kids = {};
-               yellow_kids.percent = (27 - 23) / numeric_range;
-               yellow_kids.pixels = yellow_kids.percent * pixel_range;
-               yellow_kids.start = red_kids.stop;
-               yellow_kids.stop = yellow_kids.start + yellow_kids.pixels;
+              // yellow box
+              let yellow_kids = {};
+              yellow_kids.percent = (27 - 23) / numeric_range;
+              yellow_kids.pixels = yellow_kids.percent * pixel_range;
+              yellow_kids.start = red_kids.stop;
+              yellow_kids.stop = yellow_kids.start + yellow_kids.pixels;
 
-               // 23 - 27 yellow
-               ctx.fillStyle = 'rgba(255,165,0,0.2)';//chart.config.options.chartArea.backgroundColor;
-               ctx.fillRect(left, yellow_kids.start, x_start - left, (yellow_kids.stop - yellow_kids.start));
+              // 23 - 27 yellow
+              ctx.fillStyle = 'rgba(255,165,0,0.2)'; //chart.config.options.chartArea.backgroundColor;
+              ctx.fillRect(left, yellow_kids.start, x_start - left, (yellow_kids.stop - yellow_kids.start));
 
-               // green box
-               let green_kids = {};
-               green_kids.percent = (23 - 18) / numeric_range;
-               green_kids.pixels = green_kids.percent * pixel_range;
-               green_kids.start = yellow_kids.stop;
-               green_kids.stop = green_kids.start + green_kids.pixels;
+              // green box
+              let green_kids = {};
+              green_kids.percent = (23 - 18) / numeric_range;
+              green_kids.pixels = green_kids.percent * pixel_range;
+              green_kids.start = yellow_kids.stop;
+              green_kids.stop = green_kids.start + green_kids.pixels;
 
-               // 18 - 23
-               ctx.fillStyle = 'rgba(75,192,75,0.2)';//chart.config.options.chartArea.backgroundColor;
-               ctx.fillRect(left, green_kids.start, x_start - left, (green_kids.stop - green_kids.start));
+              // 18 - 23
+              ctx.fillStyle = 'rgba(75,192,75,0.2)'; //chart.config.options.chartArea.backgroundColor;
+              ctx.fillRect(left, green_kids.start, x_start - left, (green_kids.stop - green_kids.start));
 
-               // blue box
+              // blue box
               let blue_kids = {};
               blue_kids.percent = (18 - 15) / numeric_range;
               blue_kids.pixels = blue_kids.percent * pixel_range;
@@ -388,8 +416,8 @@ let HealthyWeight = new Vue({
           data: chartData,
           options: {
             chartArea: {
-    					backgroundColor: 'rgba(251, 85, 85, 0.4)'
-    				},
+              backgroundColor: 'rgba(251, 85, 85, 0.4)'
+            },
             scales: {
               yAxes: [{
                 ticks: {

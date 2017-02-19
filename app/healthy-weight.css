@@ -45,6 +45,10 @@ html body #health-weight {
   justify-content: space-between;
 }
 
+.buttons {
+  padding-left: 10px;
+}
+
 .idsystem {
   font-size: 12px;
   font-style: italic;
@@ -83,8 +87,6 @@ html body #health-weight {
 
 .cirg-logo-container {
   display: flex;
-  /*align: center;*/
-  /*align-content: center;*/
   justify-content: center;
   width: 100%;
 }
@@ -108,22 +110,15 @@ html body #health-weight {
 }
 
 .app-title {
-  /*color: rgb(51, 0, 111);*/
   color: black;
-  /*color: red;*/
-  /*color: white;*/
   font-size: 30px;
-  /*padding-left: 80px;
-  padding-right: 80px;*/
   font-weight: 300;
-  /*align-content: middle;*/
   vertical-align: middle;
 }
 
 .cirg-logo {
   display: flex;
   align-self: center;
-  /*width 300px;*/
   height: 60px;
   align-content: center;
   justify-content: center;
