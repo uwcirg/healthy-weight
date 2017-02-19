@@ -76,6 +76,8 @@ let HealthyWeight = new Vue({
           id = value.value;
         }
       });
+
+      return id;
     },
 
     loadPatient: function(smart) {
