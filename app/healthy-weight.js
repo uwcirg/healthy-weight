@@ -33,16 +33,12 @@ let HealthyWeight = new Vue({
 
   methods: {
 
-    getCIRGdata: ( /** identifiers */ ) => {
-      const identifiers = [{
-        value: 29731,
-      }];
-
+    getCIRGdata: () => {
       // fix wrong content type
       request.parse['text/html'] = JSON.parse;
 
       return request
-        .get(CORS_PROXY + CIRG_API_BASE + identifiers[0].value)
+        .get(CORS_PROXY + CIRG_API_BASE + HealthyWeight.patient.mrn)
         .end((err, res) => {
           if (res.body) {
             HealthyWeight.patient.cirg = res.body;
