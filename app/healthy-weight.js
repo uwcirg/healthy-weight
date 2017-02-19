@@ -83,14 +83,17 @@ let HealthyWeight = new Vue({
           }
         }).then((bundle) => {
           let weights = bundle.data.entry.map((x) => {
-            return {
-              value: x.resource.valueQuantity.value,
-              unit: x.resource.valueQuantity.unit,
-              date: moment(x.resource.effectiveDateTime).format('YYYY-MM-DD'),
-            }
+
+            if(x.resource && x.resource.valueQuantity) { // check for the existance of at weight value
+              return {
+                value: x.resource.valueQuantity.value,
+                unit: x.resource.valueQuantity.unit,
+                date: moment(x.resource.effectiveDateTime).format('YYYY-MM-DD'),
+              }
+            } else return;
           });
 
-          // this.$set(this.patient, 'weights', weights);
+          this.$set(this.patient, 'weights', weights);
 
           this.$set(this.patient, 'weight', bundle.data.entry["0"].resource.valueQuantity.value);
           this.$set(this.patient, 'weightUnit', bundle.data.entry["0"].resource.valueQuantity.unit);
