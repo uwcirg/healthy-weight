@@ -43,7 +43,7 @@ let HealthyWeight = new Vue({
       return request
         .get(CORS_PROXY + CIRG_API_BASE + identifiers[0].value)
         .end((err, res) => {
-          if(res.body) {
+          if (res.body) {
             HealthyWeight.patient.cirg = res.body;
           }
         });
@@ -51,7 +51,7 @@ let HealthyWeight = new Vue({
 
     calculateBMI: function(height, weight) {
       let bmi = weight / (height * height);
-      if(!isNaN(bmi)) {
+      if (!isNaN(bmi)) {
         return parseFloat(bmi.toFixed(1));
       } else {
         return 'Unknown';
@@ -257,10 +257,139 @@ let HealthyWeight = new Vue({
         // Build chart
         var ctx = document.getElementById("BMIChart");
 
+        // Background colors plugin
+        Chart.pluginService.register({
+          beforeDraw: function(chart, easing) {
+            if (chart.config.options.chartArea && chart.config.options.chartArea.backgroundColor) {
+              var helpers = Chart.helpers;
+              var ctx = chart.chart.ctx;
+              var chartArea = chart.chartArea;
+
+              let top = chart.chartArea.top;
+              let bottom = chart.chartArea.bottom;
+              let left = chartArea.left;
+              let right = chartArea.right;
+
+              let numeric_range = 39 - 15;
+              let pixel_range = bottom - top;
+
+              /**
+               *
+               * ADULTS
+               *
+               */
+
+              let x_start = left + ((20 - 15) / (70 - 15)) * (right - left);
+
+              // red box
+              let red = {};
+              red.percent = (39 - 30) / numeric_range;
+              red.pixels = red.percent * pixel_range;
+              red.start = top;
+              red.stop = red.start + red.pixels;
+
+              // yellow box
+              let yellow = {};
+              yellow.percent = (30 - 25) / numeric_range;
+              yellow.pixels = yellow.percent * pixel_range;
+              yellow.start = red.stop;
+              yellow.stop = yellow.start + yellow.pixels;
+
+              // green box
+              let green = {};
+              green.percent = (25 - 20) / numeric_range;
+              green.pixels = yellow.percent * pixel_range;
+              green.start = yellow.stop;
+              green.stop = green.start + green.pixels;
+
+              // blue box
+              let blue = {};
+              blue.percent = (20 - 15) / numeric_range;
+              blue.pixels = blue.percent * pixel_range;
+              blue.start = green.stop;
+              blue.stop = blue.start + blue.pixels;
+
+              ctx.save();
+
+              // > 30 red
+              ctx.fillStyle = 'rgba(192,75,75,0.2)';
+              ctx.fillRect(x_start, red.start, chartArea.right - x_start, (red.stop - red.start));
+
+              // 25 - 30 yellow
+              ctx.fillStyle = 'rgba(255,165,0,0.2)';//chart.config.options.chartArea.backgroundColor;
+              ctx.fillRect(x_start, yellow.start, chartArea.right - x_start, (yellow.stop - yellow.start));
+
+              // 20 - 25 green
+              ctx.fillStyle = 'rgba(75,192,75,0.2)';//chart.config.options.chartArea.backgroundColor;
+              ctx.fillRect(x_start, green.start, chartArea.right - x_start, (green.stop - green.start));
+
+
+              // < 20 blue
+              ctx.fillStyle = 'rgba(75,75,192,0.2)';
+              ctx.fillRect(x_start, blue.start, chartArea.right - x_start, (blue.stop - blue.start));
+
+              /**
+               *
+               * KIDS
+               *
+               */
+
+               // red box
+               let red_kids = {};
+               red_kids.percent = (39 - 27) / numeric_range;
+               red_kids.pixels = red_kids.percent * pixel_range;
+               red_kids.start = top;
+               red_kids.stop = red_kids.start + red_kids.pixels;
+
+               // > 27 red
+               ctx.fillStyle = 'rgba(192,75,75,0.2)';
+               ctx.fillRect(left, red_kids.start, x_start - left, (red_kids.stop - red_kids.start));
+
+               // yellow box
+               let yellow_kids = {};
+               yellow_kids.percent = (27 - 23) / numeric_range;
+               yellow_kids.pixels = yellow_kids.percent * pixel_range;
+               yellow_kids.start = red_kids.stop;
+               yellow_kids.stop = yellow_kids.start + yellow_kids.pixels;
+
+               // 23 - 27 yellow
+               ctx.fillStyle = 'rgba(255,165,0,0.2)';//chart.config.options.chartArea.backgroundColor;
+               ctx.fillRect(left, yellow_kids.start, x_start - left, (yellow_kids.stop - yellow_kids.start));
+
+               // green box
+               let green_kids = {};
+               green_kids.percent = (23 - 18) / numeric_range;
+               green_kids.pixels = green_kids.percent * pixel_range;
+               green_kids.start = yellow_kids.stop;
+               green_kids.stop = green_kids.start + green_kids.pixels;
+
+               // 18 - 23
+               ctx.fillStyle = 'rgba(75,192,75,0.2)';//chart.config.options.chartArea.backgroundColor;
+               ctx.fillRect(left, green_kids.start, x_start - left, (green_kids.stop - green_kids.start));
+
+               // blue box
+              let blue_kids = {};
+              blue_kids.percent = (18 - 15) / numeric_range;
+              blue_kids.pixels = blue_kids.percent * pixel_range;
+              blue_kids.start = green_kids.stop;
+              blue_kids.stop = blue_kids.start + blue_kids.pixels;
+
+              // < 18 blue
+              ctx.fillStyle = 'rgba(75,75,192,0.2)';
+              ctx.fillRect(left, blue_kids.start, x_start - left, (blue_kids.stop - blue_kids.start));
+
+              ctx.restore();
+            }
+          }
+        });
+
         var BMIChart = new Chart(ctx, {
           type: 'scatter',
           data: chartData,
           options: {
+            chartArea: {
+    					backgroundColor: 'rgba(251, 85, 85, 0.4)'
+    				},
             scales: {
               yAxes: [{
                 ticks: {
