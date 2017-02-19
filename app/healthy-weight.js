@@ -57,22 +57,20 @@ let HealthyWeight = new Vue({
 
     calculateHistoricalBMIs: function(patient) {
 
-      if (patient.height) {
-        console.log(patient);
-
-        if (patient.weights) {
-
-          patient.weights.forEach(function(weight, index, array) {
-            patient.historicalBmis.push({
-              age: HealthyWeight.calculateAge(patient.birthDate, weight.date),
-            });
-          });
-        }
-      }
+      // if (patient.height) {
+      //
+      //   if (patient.weights) {
+      //
+      //     patient.weights.forEach(function(weight, index, array) {
+      //       patient.historicalBmis.push({
+      //         age: HealthyWeight.calculateAge(patient.birthDate, weight.date),
+      //       });
+      //     });
+      //   }
+      // }
       // let bmi = weight / (height * height);
       // return parseFloat(bmi.toFixed(1));
       //
-      console.log(patient);
     },
 
     calculateAge: function(birthDate, effectiveDate) {
