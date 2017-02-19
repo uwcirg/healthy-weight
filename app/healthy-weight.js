@@ -38,7 +38,7 @@ let HealthyWeight = new Vue({
       request.parse['text/html'] = JSON.parse;
 
       return request
-        .get(CORS_PROXY + CIRG_API_BASE + HealthyWeight.patient.mrn)
+        .get(CORS_PROXY + CIRG_API_BASE + 34174 /* HealthyWeight.patient.mrn */)
         .end((err, res) => {
           if (res.body) {
             HealthyWeight.patient.cirg = res.body;
