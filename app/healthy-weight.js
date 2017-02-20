@@ -6,8 +6,8 @@ import Vue from 'vue/dist/vue.min.js';
 require('../node_modules/material-design-lite/material.min.css');
 
 // const CORS_PROXY = 'https://crossorigin.me/';
-const CORS_PROXY = 'https://jsonp.afeld.me/?url=';
-// const CORS_PROXY = '';
+// const CORS_PROXY = 'https://jsonp.afeld.me/?url=';
+const CORS_PROXY = '';
 const CIRG_API_BASE = 'https://ihe.cirg.washington.edu/himss2017/api.php/';
 
 const PREFERRED_ID_OID = 'urn:oid:1.2.5.8.2.7';
@@ -41,48 +41,48 @@ let HealthyWeight = new Vue({
 
     getCIRGdata: () => {
       // fix wrong content type
-      // request.parse['text/html'] = JSON.parse;
-      //
-      // return request
-      //   .get(CORS_PROXY + CIRG_API_BASE + HealthyWeight.patient.mrn)
-      //   .end((err, res) => {
-      //     if (res.body) {
-      //       HealthyWeight.patient.cirg = res.body;
-      //     }
-      //   });
-      //
-      HealthyWeight.patient.cirg = {
-        occupation_23: "Nursing, psychiatric, and home health aides",
-        occupation_start: "2016-09-08",
-        occupation_stop: "2017-01-12",
-        occupation_industry: "Nursing care facilities",
-        occupation_type: "In paid employment (finding)",
-        occupation_schedule: "Rotating Shift",
-        occupation_hours: "32",
-        occupation_days: "4",
-        occupation_usual: "Nursing, psychiatric, and home health aides",
-        occupation_usual_duration: ".5a",
-        occupation_usual_industry: "Nursing care facilities",
-        occupation_usual_industry_duration: ".5a",
-        freq_sports_drink: "2",
-        freq_soda: "4",
-        freq_water: "1",
-        freq_veg: "1",
-        freq_fruit: "1",
-        freq_fruit_juice: "2",
-        freq_fast_food: "2",
-        freq_physical: "4",
-        physical_quantity: "20",
-        tv_quantity: null,
-        game_quantity: null,
-        bed_time: "1am",
-        sleep_quantity: "6",
-        ready_nutrition: "7",
-        ready_sleep: "6",
-        ready_exercise: "7",
-        ready_screen: null
-      };
-      return;
+      request.parse['text/html'] = JSON.parse;
+
+      return request
+        .get(CORS_PROXY + CIRG_API_BASE + '34174') //HealthyWeight.patient.mrn)
+        .end((err, res) => {
+          if (res.body) {
+            HealthyWeight.patient.cirg = res.body;
+          }
+        });
+
+      // HealthyWeight.patient.cirg = {
+      //   occupation_23: "Nursing, psychiatric, and home health aides",
+      //   occupation_start: "2016-09-08",
+      //   occupation_stop: "2017-01-12",
+      //   occupation_industry: "Nursing care facilities",
+      //   occupation_type: "In paid employment (finding)",
+      //   occupation_schedule: "Rotating Shift",
+      //   occupation_hours: "32",
+      //   occupation_days: "4",
+      //   occupation_usual: "Nursing, psychiatric, and home health aides",
+      //   occupation_usual_duration: ".5a",
+      //   occupation_usual_industry: "Nursing care facilities",
+      //   occupation_usual_industry_duration: ".5a",
+      //   freq_sports_drink: "2",
+      //   freq_soda: "4",
+      //   freq_water: "1",
+      //   freq_veg: "1",
+      //   freq_fruit: "1",
+      //   freq_fruit_juice: "2",
+      //   freq_fast_food: "2",
+      //   freq_physical: "4",
+      //   physical_quantity: "20",
+      //   tv_quantity: null,
+      //   game_quantity: null,
+      //   bed_time: "1am",
+      //   sleep_quantity: "6",
+      //   ready_nutrition: "7",
+      //   ready_sleep: "6",
+      //   ready_exercise: "7",
+      //   ready_screen: null
+      // };
+      // return;
     },
 
     calculateBMI: function(height, weight) {
